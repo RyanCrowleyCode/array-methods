@@ -303,7 +303,11 @@ searchBox.addEventListener("keypress", keyPressEvent => {
       `
     }
     const startOverButton = document.querySelector("#startOver")
-    startOverButton.addEventListener("click", printAllBusinesses)
+
+    startOverButton.addEventListener("click", function () {
+      searchBox.value = ""
+      printAllBusinesses()
+    })
 
   }
   })
