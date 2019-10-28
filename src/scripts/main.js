@@ -159,28 +159,47 @@ const outEl = document.querySelector("#output")
 // });
 
 // Array to contain all of the manufacturing businesses
-const manufacturingBusinesses = businesses.filter(business => {
-    let manufBiz = false
+// const manufacturingBusinesses = businesses.filter(business => {
+//     let manufBiz = false
     
-    if (business.companyIndustry == "Manufacturing") {
-        manufBiz = true
-    }
+//     if (business.companyIndustry == "Manufacturing") {
+//         manufBiz = true
+//     }
 
-    return manufBiz
+//     return manufBiz
+// })
+
+// // Printing all Manufacturing Businesses to the DOM
+// outEl.innerHTML = "<h1>Manufacturing Businesses</h1>"
+// manufacturingBusinesses.forEach(business => {
+//     const zipcodeKey = "addressZipCode"
+//     outEl.innerHTML += `
+//         <h2>${business.companyName}</h2>
+//         <section>
+//         ${business.addressFullStreet}
+//         </section>
+//         <section>
+//             ${business.addressCity}, ${business["addressStateCode"]} ${business[zipcodeKey]}
+//         </section>
+//         `
+//     outEl.innerHTML += "<hr/>"
+// });
+
+
+// PURCHASING AGENTS / MAP FUNCTION
+outEl.innerHTML += "<h1>Purchasing Agents</h1>";
+
+/*
+    Using map(), you extract the purchasing agent object
+    from each business and store it in a new array
+*/
+const agents = businesses.map(business => {
+    return business.purchasingAgent
 })
 
-// Printing all Manufacturing Businesses to the DOM
-outEl.innerHTML = "<h1>Manufacturing Businesses</h1>"
-manufacturingBusinesses.forEach(business => {
-    const zipcodeKey = "addressZipCode"
-    outEl.innerHTML += `
-        <h2>${business.companyName}</h2>
-        <section>
-        ${business.addressFullStreet}
-        </section>
-        <section>
-            ${business.addressCity}, ${business["addressStateCode"]} ${business[zipcodeKey]}
-        </section>
-        `
-    outEl.innerHTML += "<hr/>"
+console.table(agents)
+
+agents.forEach(agent => {
+  outEl.innerHTML += `<h2>${agent.nameFirst} ${agent.nameLast}</h2>`;
+  outEl.innerHTML += "<hr/>";
 });
