@@ -212,17 +212,35 @@ businesses.forEach(business => {
 // });
 
 // SEARCHING FOR COMPANY NAMES"
-const companySearchButton = document.querySelector("#companySearch")
+// const companySearchButton = document.querySelector("#companySearch")
 
-companySearchButton.addEventListener("keypress", keyPressEvent => {
+// companySearchButton.addEventListener("keypress", keyPressEvent => {
+//   if (keyPressEvent.charCode === 13) {
+//     const foundBusiness = businesses.find(business => business.companyName.toLowerCase().includes(keyPressEvent.target.value.toLowerCase()))
+
+//     if (foundBusiness) {
+//       outEl.innerHTML = `
+//       <h2>${foundBusiness.companyName}</h2>
+//       <section>${foundBusiness.addressFullStreet}</section>
+//       <section>${foundBusiness.addressCity}, ${foundBusiness.addressStateCode} ${foundBusiness.addressZipCode}</section>
+//       `
+//     }
+//   }
+// })
+
+// SEARCHING FOR PURCHASING AGENT FIRST NAME
+const searchBox = document.querySelector("#companySearch")
+
+searchBox.addEventListener("keypress", keyPressEvent => {
   if (keyPressEvent.charCode === 13) {
-    const foundBusiness = businesses.find(business => business.companyName.includes(keyPressEvent.target.value))
+    const foundAgent = businesses.find(business => business.purchasingAgent.nameFirst.toLowerCase().includes(keyPressEvent.target.value.toLowerCase()))
 
-    if (foundBusiness) {
+    if (foundAgent) {
       outEl.innerHTML = `
-      <h2>${foundBusiness.companyName}</h2>
-      <section>${foundBusiness.addressFullStreet}</section>
-      <section>${foundBusiness.addressCity}, ${foundBusiness.addressStateCode} ${foundBusiness.addressZipCode}</section>
+      <h2>${foundAgent.purchasingAgent.nameFirst} ${foundAgent.purchasingAgent.nameLast}</h2>
+      <section>${foundAgent.addressFullStreet}</section>
+      <section>${foundAgent.addressCity}, ${foundAgent.addressStateCode} ${foundAgent.addressZipCode}</section>
+      <section>${foundAgent.phoneWork}</section>
       `
     }
   }
