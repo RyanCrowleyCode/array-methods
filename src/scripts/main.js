@@ -194,7 +194,6 @@ outEl.innerHTML += "<h1>Purchasing Agents</h1>";
     from each business and store it in a new array
 */
 const agents = businesses.map(business => {
-   
   return {
     fullName: `${business.purchasingAgent.nameFirst} ${business.purchasingAgent.nameLast}`,
     company: business.companyName,
