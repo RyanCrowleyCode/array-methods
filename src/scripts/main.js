@@ -121,9 +121,15 @@ const outEl = document.querySelector("#output")
 const printAllBusinesses = function () {
   outEl.innerHTML = "<h1>Active Businesses</h1>"
   businesses.forEach(business => {
+    // calculate total order amount
+    const orderTotal = business.orders.reduce((total, currentValue) => total += currentValue, 0)
+
     const zipcodeKey = "addressZipCode"
     outEl.innerHTML += `
-        <h2>${business.companyName}</h2>
+        <h2>
+          ${business.companyName}
+          ($${orderTotal.toFixed(2)})
+        </h2>
         <section>
         ${business.addressFullStreet}
         </section>
