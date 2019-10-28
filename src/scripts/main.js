@@ -111,8 +111,11 @@ const businesses = [
     }
 ]
 
+// TARGETING THE OUTPUT DIV ON INDEX.HTML
 const outEl = document.querySelector("#output")
-outEl.innerHTML = "<h1>Active Businesses</h1>"
+
+// ADDING H1 TO DOM FOR "ACTIVE BUSINESSESS"
+// outEl.innerHTML = "<h1>Active Businesses</h1>"
 
 // Printing all businesses to the DOM
 // businesses.forEach(business => {
@@ -129,19 +132,46 @@ outEl.innerHTML = "<h1>Active Businesses</h1>"
 //     outEl.innerHTML += "<hr/>"
 // });
 
-// Array to contain all the New York businesses
-const newYorkBusinesses = businesses.filter(business => {
-    let inNewYork = false
+// // Array to contain all the New York businesses
+// const newYorkBusinesses = businesses.filter(business => {
+//     let inNewYork = false
   
-    if (business.addressStateCode === "NY") {
-        inNewYork = true
-    }
+//     if (business.addressStateCode === "NY") {
+//         inNewYork = true
+//     }
   
-    return inNewYork
-  })
+//     return inNewYork
+//   })
 
   // Printing all NY businesses to the DOM
-  newYorkBusinesses.forEach(business => {
+//   newYorkBusinesses.forEach(business => {
+//     const zipcodeKey = "addressZipCode"
+//     outEl.innerHTML += `
+//         <h2>${business.companyName}</h2>
+//         <section>
+//         ${business.addressFullStreet}
+//         </section>
+//         <section>
+//             ${business.addressCity}, ${business["addressStateCode"]} ${business[zipcodeKey]}
+//         </section>
+//         `
+//     outEl.innerHTML += "<hr/>"
+// });
+
+// Array to contain all of the manufacturing businesses
+const manufacturingBusinesses = businesses.filter(business => {
+    let manufBiz = false
+    
+    if (business.companyIndustry == "Manufacturing") {
+        manufBiz = true
+    }
+
+    return manufBiz
+})
+
+// Printing all Manufacturing Businesses to the DOM
+outEl.innerHTML = "<h1>Manufacturing Businesses</h1>"
+manufacturingBusinesses.forEach(business => {
     const zipcodeKey = "addressZipCode"
     outEl.innerHTML += `
         <h2>${business.companyName}</h2>
